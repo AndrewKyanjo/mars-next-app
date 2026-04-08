@@ -1,33 +1,39 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaCalendarAlt, FaMapMarkerAlt,FaClock, FaTimes } from "react-icons/fa";
+import { FaCalendarAlt, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import { EventItem } from "@/lib/constants";
 
 type Props = EventItem;
 
 const EventCard = ({ title, image, date, location, time }: Props) => {
-    return (
-        <Link href="#" >
-          {// Use Next.js Image component for optimized image loading
-            //should have a rounded border and a fixed height of 200px, and the image should cover the entire area without distortion
-          }
-            <Image src={image} alt={title} width={300} height={200} className=" h-48 object-cover mb-4 rounded border"    />
-            <h4 className="text-xl font-semibold">{title}</h4>
-            <p className="text-gray-600 flex items-center">
-                <FaCalendarAlt className="mr-2" />
-                Date: {date}
-            </p>
-            <p className="text-gray-600 flex items-center">
-                <FaMapMarkerAlt className="mr-2" />
-                Location: {location}
-            </p>
-            <p className="text-gray-600 flex items-center">
-                <FaClock className="mr-2" />
-                Time: {time}
-            </p>
-        </Link>
-    );
+  return (
+    <Link href="#" className="block h-full">
+      {/* Inner container: flex column, full height for consistent card size */}
+      <div className="flex flex-col h-full">
+        <Image
+          src={image}
+          alt={title}
+          width={300}
+          height={200}
+          className="h-48 w-full object-cover rounded border mb-4"
+        />
+        <h4 className="text-xl font-semibold">{title}</h4>
+        <p className="text-gray-600 flex items-center mt-1">
+          <FaCalendarAlt className="mr-2 shrink-0" />
+          <span>Date: {date}</span>
+        </p>
+        <p className="text-gray-600 flex items-center mt-1">
+          <FaMapMarkerAlt className="mr-2 shrink-0" />
+          <span>Location: {location}</span>
+        </p>
+        <p className="text-gray-600 flex items-center mt-1">
+          <FaClock className="mr-2 shrink-0" />
+          <span>Time: {time}</span>
+        </p>
+      </div>
+    </Link>
+  );
 };
 
 export default EventCard;

@@ -5,9 +5,12 @@ const ExploreBtn = () => {
     return (
         <div>
             {" "}
-            <button onClick={() => console.log("Explore clicked!")}>
+            <p
+                onClick={() => console.log("Explore clicked!")}
+                className=" text-center mt-4 text-lg"
+            >
                 Explore
-            </button>
+            </p>
         </div>
     );
 };
