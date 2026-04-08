@@ -3,6 +3,7 @@ import { Schibsted_Grotesk, Martian_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import LiquidEther from "../components/LiquidEther.jsx";
 import { cn } from "@/lib/utils";
+import { PostHogProvider } from "./PostHogProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -71,7 +72,9 @@ export default function RootLayout({
                         color2="#B19EEF"
                     />
                 </div>
-                <main className="relative z-10 text-white ">{children}</main>
+                <PostHogProvider>
+                    <main className="relative z-10 text-white ">{children}</main>
+                </PostHogProvider>
             </body>
         </html>
     );
